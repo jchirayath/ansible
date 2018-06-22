@@ -1,0 +1,14 @@
+ - hosts: aspl
+   gather_facts: no
+ 
+   pre_tasks:
+   - name: Install Python
+     become: yes
+     become_method: sudo
+     raw: sudo apt-get -y install python-simplejson
+
+   tasks:
+   - name: Deploy SSH Key
+     authorized_key: user=jacobc
+                     key="{{ lookup('file', '/Users/jacobc/.ssh/id_rsa.pub') }}"
+                     state=present
