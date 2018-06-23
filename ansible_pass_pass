@@ -1,0 +1,1 @@
+ansible-playbook --ask-pass install_phyton.yml --ask-become-pass

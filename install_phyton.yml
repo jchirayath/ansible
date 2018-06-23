@@ -1,0 +1,9 @@
+- hosts: Ubuntu
+  gather_facts: no
+  pre_tasks:
+    - name: 'install python2'
+      raw: sudo apt-get -y install python-simplejson
+
+  tasks:
+    - name: 'get hostname'
+      raw: hostname

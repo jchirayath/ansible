@@ -1,0 +1,8 @@
+---
+- hosts: Ubuntu
+  tasks:
+  - name: Set authorized key took from file
+     authorized_key:
+     user: jacobc
+     state: present
+     key: "{{ lookup('file', '/root/.ssh/id_rsa.pub') }}"
