@@ -1,0 +1,18 @@
+ - hosts: all
+   gather_facts: no
+
+   tasks:
+   - name: Check Become root
+     become: yes
+     become_user: root
+     become_method: su
+     shell: hostname
+
+   - name: Get the network Interface
+     shell: nmcli dev | grep ethernet | awk '{print $1}'
+     register: nmcli_interface
+   - debug:
+     msg: "{{ nmcli_interface }}"
+
+   - name: Create Mail Account
+     command: "echo {{ nmcli_interface }} > /etc/jc"

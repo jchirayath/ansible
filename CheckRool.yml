@@ -1,0 +1,9 @@
+ - hosts: all
+   gather_facts: no
+
+   tasks:
+   - name: Check Become root
+     become: yes
+     become_user: root
+     become_method: su
+     raw: hostname

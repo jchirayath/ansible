@@ -1,0 +1,16 @@
+ - hosts: all
+   gather_facts: no
+   become: yes
+   become_user: root
+   become_method: su
+ 
+   tasks:
+    - file:
+       path: "/etc/certs"
+       state: directory
+    - copy:
+       src: /home/jacobc/ansible/nm.sh
+       dest: /etc/certs/nm.sh
+       mode: 0500
+  
+#       src: "{{ lookup('file',lookup('env','HOME') + '/ansible/certs/Centos100.p12') }}"

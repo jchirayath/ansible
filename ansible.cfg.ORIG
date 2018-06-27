@@ -1,5 +1,6 @@
 [defaults]
-inventory=hosts.cfg
+#inventory=hosts.cfg
+inventory=hosts
 
 # config file for ansible -- https://ansible.com/
 # ===============================================
