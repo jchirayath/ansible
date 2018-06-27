@@ -1,0 +1,8 @@
+ - hosts: aspl
+   gather_facts: no
+ 
+   tasks:
+   - name: Deploy SSH Key
+     authorized_key: user=jacobc
+                     key="{{ lookup('file',lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
+                     state=present
