@@ -14,7 +14,7 @@ nmcli connection add \
 ifname $INTERFACE \
 type ethernet \
 -- \
-connection.id wired-ebay-corp \
+connection.id wired-corp \
 802-1x.eap tls \
 802-1x.identity host/$HOSTNAME \
 802-1x.client-cert $CERTFILE \
