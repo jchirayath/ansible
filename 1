@@ -1,0 +1,14 @@
+ - hosts: all
+   gather_facts: no
+   become: yes
+   become_user: root
+   become_method: su
+ 
+   tasks:
+    - file:
+       path: "/etc/certs"
+       state: directory
+    - copy:
+       src: "{{ lookup('file',lookup('env','HOME') + '/ansbile/certs/centos100.p12') }}"
+       dest: /etc/certs/mycert.p12
+  

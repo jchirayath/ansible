@@ -1,0 +1,16 @@
+ - hosts: all
+   gather_facts: no
+ 
+   tasks:
+   - name: Check if nmcli is installed
+     shell: command -v nmcli >/dev/null 2>&1
+     register: is_nmcli_exist
+     ignore_errors: yesate=present
+
+   - name: try nmcli del team - multiple
+     nmcli:
+      conn_name: '{{ item.conn_name }}'
+      state: absent
+     with_items:
+      - conn_name: eth0
+      - conn_name: ens33
